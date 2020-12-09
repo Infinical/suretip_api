@@ -8,6 +8,7 @@ defmodule SuretipsApi.Repo.Migrations.CreateTips do
       add :league, :string
       add :pick, :string
       add :status, :boolean, default: false, null: false
+      add :today, :date
 
       timestamps()
     end

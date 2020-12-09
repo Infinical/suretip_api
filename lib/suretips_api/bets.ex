@@ -101,4 +101,22 @@ defmodule SuretipsApi.Bets do
   def change_tip(%Tip{} = tip, attrs \\ %{}) do
     Tip.changeset(tip, attrs)
   end
+
+
+   @doc """
+  Get tips by date.
+
+  ## Examples
+
+     iex> get_tip!(13-02-2020)
+      %Tip{}
+
+      iex> get_tip!(13-02-2020)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_tips_by_date(date) do
+    query = from(t in Tip, where: t.today == ^date)
+    Repo.all(query)
+  end
 end

@@ -8,6 +8,7 @@ defmodule SuretipsApi.Bets.Tip do
     field :odds, :string
     field :pick, :string
     field :status, :boolean, default: false
+    field :today, :date, default: Date.utc_today
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule SuretipsApi.Bets.Tip do
   @doc false
   def changeset(tip, attrs) do
     tip
-    |> cast(attrs, [:game, :odds, :league, :pick, :status])
-    |> validate_required([:game, :odds, :league, :pick, :status])
+    |> cast(attrs, [:game, :odds, :league, :pick, :status,:today])
+    |> validate_required([:game, :odds, :league, :pick, :status,:today])
   end
 end

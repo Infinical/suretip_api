@@ -40,4 +40,10 @@ defmodule SuretipsApiWeb.TipController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def get_by_date(conn, %{"date" => date}) do
+    tips = Bets.get_tips_by_date(date)
+    render(conn, "index.json", tips: tips)
+  end
+
 end
