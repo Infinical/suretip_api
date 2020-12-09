@@ -7,6 +7,8 @@ defmodule SuretipsApiWeb.Router do
 
   scope "/api", SuretipsApiWeb do
     pipe_through :api
+
+    resources "/tips", TipController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development
