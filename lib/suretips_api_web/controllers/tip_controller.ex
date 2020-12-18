@@ -41,8 +41,11 @@ defmodule SuretipsApiWeb.TipController do
     end
   end
 
-  def get_by_date(conn, %{"date" => date}) do
+  def show_today(conn, _params) do
+    date = Date.utc_today
+    IO.puts(date)
     tips = Bets.get_tips_by_date(date)
+   
     render(conn, "index.json", tips: tips)
   end
 

@@ -9,7 +9,7 @@ defmodule SuretipsApiWeb.Router do
     pipe_through :api
 
     resources "/tips", TipController, except: [:new, :edit]
-    get "/tips/:date", TipController, :get_by_date
+    get "/today", TipController, :show_today
   end
 
   # Enables LiveDashboard only for development
