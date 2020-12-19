@@ -14,6 +14,7 @@ defmodule SuretipsApiWeb.TipController do
   def create(conn, %{"tip" => tip_params}) do
     with {:ok, %Tip{} = tip} <- Bets.create_tip(tip_params) do
       conn
+      |> BetHistory.create_history(%{"history" => {past_date: tip_params.today}})
       |> put_status(:created)
       |> put_resp_header("location", Routes.tip_path(conn, :show, tip))
       |> render("show.json", tip: tip)
@@ -43,9 +44,7 @@ defmodule SuretipsApiWeb.TipController do
 
   def show_today(conn, _params) do
     date = Date.utc_today
-    IO.puts(date)
     tips = Bets.get_tips_by_date(date)
-   
     render(conn, "index.json", tips: tips)
   end
 

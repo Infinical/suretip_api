@@ -116,9 +116,7 @@ defmodule SuretipsApi.Bets do
 
   """
   def get_tips_by_date(date) do
-
   query = from t in "tips", where: t.today == ^date,select: [:id,:game,:odds,:league,:pick,:status]
-
   Repo.all(query)
   end
 end

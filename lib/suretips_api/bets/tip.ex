@@ -9,6 +9,7 @@ defmodule SuretipsApi.Bets.Tip do
     field :pick, :string
     field :status, :boolean, default: false
     field :today, :date, default: Date.utc_today
+    belongs_to :histories, SuretipsApi.BetHistory.History
 
     timestamps()
   end
